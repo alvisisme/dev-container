@@ -45,6 +45,14 @@ ENV NVM_SYMLINK_CURRENT=true \
 COPY library-scripts/node.sh /tmp/library-scripts/
 RUN apt-get update && bash /tmp/library-scripts/node.sh "${NVM_DIR}"
 
+# 一些工程化工具
+RUN yarn global add \
+    yo generator-standard-readme \
+    markdownlint-cli \
+    @ls-lint/ls-lint \
+    commitizen  cz-conventional-changelog \
+    && echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+
 # china mirror
 COPY library-scripts/apt-source.sh /tmp/library-scripts/
 RUN bash /tmp/library-scripts/apt-source.sh && apt-get update
