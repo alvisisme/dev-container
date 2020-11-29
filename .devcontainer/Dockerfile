@@ -43,7 +43,7 @@ ENV NVM_DIR="/usr/local/share/nvm"
 ENV NVM_SYMLINK_CURRENT=true \
     PATH=${NVM_DIR}/current/bin:${PATH}
 COPY library-scripts/node.sh /tmp/library-scripts/
-RUN apt-get update && bash /tmp/library-scripts/node.sh "${NVM_DIR}"
+RUN apt-get update && bash /tmp/library-scripts/node.sh "${NVM_DIR}" "${NODE_VERSION}"
 
 # 一些工程化工具
 RUN yarn global add \
