@@ -1,9 +1,6 @@
 ARG VARIANT="18.04"
 FROM ubuntu:${VARIANT}
 
-COPY library-scripts/apt-source.sh /tmp/library-scripts/
-RUN bash /tmp/library-scripts/apt-source.sh && apt-get update
-
 COPY library-scripts/common.sh /tmp/library-scripts/
 RUN bash /tmp/library-scripts/common.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" \
     && apt-get clean -y \
@@ -12,7 +9,6 @@ RUN bash /tmp/library-scripts/common.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_U
 ENV GIT_VERSION=2.29.0
 COPY library-scripts/git-from-src.sh /tmp/library-scripts/
 RUN apt-get update && bash /tmp/library-scripts/git-from-src.sh $GIT_VERSION
-
 
 ENV SDKMAN_DIR="/usr/local/sdkman"
 ENV PATH=${SDKMAN_DIR}/bin:${PATH}
@@ -30,7 +26,6 @@ COPY library-scripts/gradle.sh /tmp/library-scripts/
 RUN apt-get update && bash /tmp/library-scripts/gradle.sh "${GRADLE_VERSION}" "${SDKMAN_DIR}"
 
 ENV MAVEN_VERSION=3.6.3
-ENV SDKMAN_DIR="/usr/local/sdkman"
 ENV PATH=${SDKMAN_DIR}/candidates/maven/current/bin:${PATH}
 COPY library-scripts/maven.sh /tmp/library-scripts/
 RUN apt-get update && bash /tmp/library-scripts/maven.sh "${MAVEN_VERSION}" "${SDKMAN_DIR}"
@@ -49,3 +44,15 @@ ENV NVM_SYMLINK_CURRENT=true \
     PATH=${NVM_DIR}/current/bin:${PATH}
 COPY library-scripts/node.sh /tmp/library-scripts/
 RUN apt-get update && bash /tmp/library-scripts/node.sh "${NVM_DIR}"
+
+# china mirror
+COPY library-scripts/apt-source.sh /tmp/library-scripts/
+RUN bash /tmp/library-scripts/apt-source.sh && apt-get update
+
+ENV NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
+
+COPY library-scripts/node-mirror.sh /tmp/library-scripts/
+RUN bash /tmp/library-scripts/node-mirror.sh
+
+COPY library-scripts/python-mirror.sh /tmp/library-scripts/
+RUN bash /tmp/library-scripts/python-mirror.sh

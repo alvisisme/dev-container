@@ -308,8 +308,7 @@ if [ "${INSTALL_ZSH}" = "true" ]; then
         echo "${RC_SNIPPET}" >> /etc/zsh/zshrc
         ZSH_ALREADY_INSTALLED="true"
     fi
-    # install-oh-my zsh zshrc.zsh-template https://github.com/ohmyzsh/ohmyzsh
-    install-oh-my zsh zshrc.zsh-template https://gitee.com/mirrors/oh-my-zsh.git
+    install-oh-my zsh zshrc.zsh-template https://github.com/ohmyzsh/ohmyzsh
 fi
 
 # Write marker file
