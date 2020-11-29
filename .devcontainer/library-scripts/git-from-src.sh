@@ -20,11 +20,11 @@ fi
 export DEBIAN_FRONTEND=noninteractive
 
 # Install required packages to build if missing
-if ! dpkg -s build-essential curl ca-certificates tar gettext libssl-dev zlib1g-dev libexpat1-dev vim> /dev/null 2>&1; then
+if ! dpkg -s build-essential curl ca-certificates tar gettext libssl-dev zlib1g-dev libexpat1-dev vim stow> /dev/null 2>&1; then
     if [ ! -d "/var/lib/apt/lists" ] || [ "$(ls /var/lib/apt/lists/ | wc -l)" = "0" ]; then
         apt-get update
     fi
-    apt-get -y install --no-install-recommends build-essential curl ca-certificates tar gettext libssl-dev zlib1g-dev libcurl?-openssl-dev libexpat1-dev vim
+    apt-get -y install --no-install-recommends build-essential curl ca-certificates tar gettext libssl-dev zlib1g-dev libcurl?-openssl-dev libexpat1-dev vim stow
 fi
 
 if [ "${GIT_VERSION}" = "latest" ] || [ "${GIT_VERSION}" = "lts" ] || [ "${GIT_VERSION}" = "current" ]; then
@@ -36,6 +36,6 @@ echo "Downloading source for ${GIT_VERSION}..."
 curl -sL https://github.com/git/git/archive/v${GIT_VERSION}.tar.gz | tar -xzC /tmp 2>&1
 echo "Building..."
 cd /tmp/git-${GIT_VERSION}
-make -s prefix=/usr/local all && make -s prefix=/usr/local install 2>&1
+make -s prefix=/usr/local/stow/git all && make -s prefix=/usr/local/stow/git install && cd /usr/local/stow && stow git 2>&1
 rm -rf /tmp/git-${GIT_VERSION}
 echo "Done!"

@@ -2,4 +2,4 @@ version: '3'
 services:
   dev-container:
     build: .
-    image: dev-image
+    image: dev-container
