@@ -1,6 +1,8 @@
-# dev-container
+# 个人开发容器
 
-[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/alvisisme/dev-container/Build%20and%20push%20docker%20images?label=GitHub%20Actions)
+![Docker Pulls](https://img.shields.io/docker/pulls/alvisisme/dev-container)
+[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg)](https://github.com/RichardLitt/standard-readme)
 
 Personal development container.
 
