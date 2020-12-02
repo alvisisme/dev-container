@@ -36,6 +36,6 @@ jobs:
         image: alvisisme/dev-container
         tags: node
         registry: docker.io
-        dockerfile: containers/base/node
+        dockerfile: containers/node/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
