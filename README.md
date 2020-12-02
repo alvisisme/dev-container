@@ -6,30 +6,34 @@
 
 Personal development container.
 
-* ubuntu 18.04.5 LTS
-* git 2.29.0
-* python 3.8.3
-* openjdk 1.8.0_265, gradle 6.7.1, apache Maven 3.6.3 (with sdkman 5.9.1+575)
-* node 12.8.1 and npm 6.10.2 (with nvm 0.35.3)
+* [alvisisme/dev-container:base](./containers/base/README.md)
+* [alvisisme/dev-container:c](./containers/c/README.md)
+* [alvisisme/dev-container:java](./containers/java/README.md)
+* [alvisisme/dev-container:node](./containers/node/README.md)
+* [alvisisme/dev-container:python](./containers/python/README.md)
 
-## Table of Contents
+## 目录
 
-- [Install](#install)
-- [Usage](#usage)
-- [Maintainers](#maintainers)
-- [Contributing](#contributing)
-- [License](#license)
+* [Install](#Install)
+* [Usage](#Usage)
+* [Maintainers](#maintainers)
+* [Contributing](#contributing)
+* [License](#license)
 
 ## Install
 
 ```bash
-docker pull alvisisme/dev-container
+docker pull alvisisme/dev-container:base
+docker pull alvisisme/dev-container:node
+...
 ```
 
 ## Usage
 
 ```bash
-docker run -it alvisisme/dev-container
+docker run -it alvisisme/dev-container:base
+docker run -it alvisisme/dev-container:node
+...
 ```
 
 ## Maintainers
@@ -38,7 +42,8 @@ docker run -it alvisisme/dev-container
 
 ## Contributing
 
-Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
+Small note: If editing the README, please conform to
+the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
 ## License
 
