@@ -19,6 +19,6 @@ jobs:
         image: alvisisme/dev-container
         tags: base
         registry: docker.io
-        dockerfile: container/base/Dockerfile
+        dockerfile: containers/base/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
