@@ -73,3 +73,37 @@ jobs:
         dockerfile: containers/python/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+  c:
+    name: C
+    runs-on: ubuntu-18.04
+    needs: base
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2.3.2
+
+    - name: Build & push c image
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: alvisisme/dev-container
+        tags: c
+        registry: docker.io
+        dockerfile: containers/c/Dockerfile
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+  cpp:
+    name: Cpp
+    runs-on: ubuntu-18.04
+    needs: base
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2.3.2
+
+    - name: Build & push cpp image
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: alvisisme/dev-container
+        tags: cpp
+        registry: docker.io
+        dockerfile: containers/cpp/Dockerfile
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
