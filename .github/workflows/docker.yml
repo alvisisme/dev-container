@@ -6,8 +6,8 @@ on:
       - master
 
 jobs:
-  linux:
-    name: Linux
+  base:
+    name: Base
     runs-on: ubuntu-18.04
     steps:
     - name: Check out code
@@ -20,5 +20,22 @@ jobs:
         tags: base
         registry: docker.io
         dockerfile: containers/base/Dockerfile
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+  node:
+    name: Node
+    runs-on: ubuntu-18.04
+    needs: base
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2.3.2
+
+    - name: Build & push node image
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: alvisisme/dev-container
+        tags: node
+        registry: docker.io
+        dockerfile: containers/base/node
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
