@@ -19,3 +19,5 @@ RUN bash /tmp/library-scripts/node-mirror.sh
 
 COPY library-scripts/python-mirror.sh /tmp/library-scripts/
 RUN bash /tmp/library-scripts/python-mirror.sh
+
+USER vscode

@@ -30,3 +30,5 @@ ENV NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 
 COPY library-scripts/node-mirror.sh /tmp/library-scripts/
 RUN bash /tmp/library-scripts/node-mirror.sh
+
+USER vscode

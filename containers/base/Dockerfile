@@ -6,6 +6,10 @@ RUN bash /tmp/library-scripts/common.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_U
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 
+ENV LANG=en_US.UTF-8 
+ENV LANGUAGE=en_US:en 
+ENV LC_ALL=en_US.UTF-8
+
 ENV GIT_VERSION=2.29.0
 COPY library-scripts/git-from-src.sh /tmp/library-scripts/
 RUN apt-get update && bash /tmp/library-scripts/git-from-src.sh $GIT_VERSION
